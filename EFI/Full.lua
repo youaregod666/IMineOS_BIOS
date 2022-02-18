@@ -111,6 +111,9 @@ local boot, menuBack, menu, input =
 	function(f)
 		return menuElement("Back", f, 1)
 	end,
+function(f)
+		return menuElement("Internet Beta", f, 1)
+	end,
 	function(titleText, elements)
 		local selectedElement, maxLength = 1, 0
 		for i = 1, #elements do
@@ -267,9 +270,38 @@ while uptime() < deadline do
 			menuBack()
 		}
 
+		--if internetAddress then	
+			--tableInsert(utilities, 2, menuElement("Internet recovery", function()
+				--local handle, data, result, reason = componentProxy(internetAddress).request("https://raw.githubusercontent.com/IgorTimofeev/MineOS/master/Installer/Main.lua"), ""
+
+				--if handle then
+				--	status(stringsMain, "Downloading recovery script")
+
+				--	while 1 do
+				--		result, reason = handle.read(mathHuge)	
+				--		
+				--		if result then
+				--			data = data .. result
+				--		else
+				--			handle.close()
+				--			
+				--			if reason then
+				--				status(stringsMain, reason, 1)
+				--			else
+				--				executeString(data, "=string")
+				--			end
+
+				--			break
+				--		end
+				--	end
+				--else
+			--		status(stringsMain, "invalid URL-address", 1)
+				--end
+			--end))
+		--end
 		if internetAddress then	
 			tableInsert(utilities, 2, menuElement("Internet recovery", function()
-				local handle, data, result, reason = componentProxy(internetAddress).request("https://raw.githubusercontent.com/IgorTimofeev/MineOS/master/Installer/Main.lua"), ""
+				local handle, data, result, reason = componentProxy(internetAddress).request("https://raw.githubusercontent.com/youaregod666/mine/master/Installer/Main.lua"), ""
 
 				if handle then
 					status(stringsMain, "Downloading recovery script")
