@@ -42,7 +42,7 @@ end
 
 local function title()
 	local y = math.floor(screenHeight / 2 - 1)
-	centrizedText(y, 0x2D2D2D, "Starting Mine Setup")
+	centrizedText(y, 0x2D2D2D, "Starting IMineOS Setup")
 
 	return y + 2
 end
