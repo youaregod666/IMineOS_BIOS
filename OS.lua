@@ -105,7 +105,7 @@ local function UIRequire(module)
 		return math.floor(screenWidth / 2 - width / 2)
 	end
 	
-	local title, width, total = "Welcome to Mine", 28, 19
+	local title, width, total = "Welcome to IMineOS", 28, 19
 	local x, y, part = centrize(width), math.floor(screenHeight / 2 - 1), math.ceil(width * UIRequireCounter / UIRequireTotal)
 	UIRequireCounter = UIRequireCounter + 1
 	
