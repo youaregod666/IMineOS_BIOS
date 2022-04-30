@@ -541,7 +541,7 @@ addStage(function()
 
 	-- Renaming if possible
 	if not selectedFilesystemProxy.getLabel() then
-		selectedFilesystemProxy.setLabel("MineOS HDD")
+		selectedFilesystemProxy.setLabel("IMineOS")
 	end
 
 	local function switchProxy(runnable)
@@ -570,7 +570,7 @@ addStage(function()
 	workspace:draw()
 	
 	EEPROMProxy.set(request(EFIURL))
-	EEPROMProxy.setLabel("MineOS EFI")
+	EEPROMProxy.setLabel("IMineOS BIOS")
 	EEPROMProxy.setData(selectedFilesystemProxy.address)
 
 	-- Downloading files
