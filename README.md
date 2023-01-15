@@ -14,7 +14,6 @@ Here's a list of a few features:
 -   File sharing over the local network via modems
 -   Client connections to real FTP servers
 -   An internal IDE with syntax highlighting and debugger
--   Integrated application and library App Market with the ability to publish your own scripts and programs for every Mine user
 -   Error reporting system with the possibility to send information to developers
 -   Animations, wallpapers, screensavers, color schemes and huge customization possibilities
 -   Open source system API and detailed illustrated documentations
