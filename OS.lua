@@ -7,13 +7,10 @@ local bootFilesystemProxy = component.proxy(component.proxy(component.list("eepr
 -- Executes file from boot HDD during OS initialization (will be overriden in filesystem library later)
 function dofile(path)
 	local stream, reason = bootFilesystemProxy.open(path, "r")
-	
 	if stream then
 		local data, chunk = ""
-		
 		while true do
 			chunk = bootFilesystemProxy.read(stream, math.huge)
-			
 			if chunk then
 				data = data .. chunk
 			else
@@ -24,7 +21,6 @@ function dofile(path)
 		bootFilesystemProxy.close(stream)
 
 		local result, reason = load(data, "=" .. path)
-		
 		if result then
 			return result()
 		else
@@ -45,7 +41,9 @@ package = {
 }
 
 -- Checks existense of specified path. It will be overriden after filesystem library initialization
-local requireExists = bootFilesystemProxy.exists
+local function requireExists(path)
+	return bootFilesystemProxy.exists(path)
+end
 
 -- Works the similar way as native Lua require() function
 function require(module)
@@ -98,32 +96,32 @@ local GPUProxy = component.proxy(component.list("gpu")())
 local screenWidth, screenHeight = GPUProxy.getResolution()
 
 -- Displays title and currently required library when booting OS
-local UIRequireTotal, UIRequireCounter = 14, 1
+local UIRequireTotal, UIRequireCounter = 13, 1
 
 local function UIRequire(module)
 	local function centrize(width)
 		return math.floor(screenWidth / 2 - width / 2)
 	end
 	
-	local title, width, total = "Welcome to IMineOS", 28, 19
+	local title, width, total = "MineOS", 26, 14
 	local x, y, part = centrize(width), math.floor(screenHeight / 2 - 1), math.ceil(width * UIRequireCounter / UIRequireTotal)
 	UIRequireCounter = UIRequireCounter + 1
 	
 	-- Title
-	GPUProxy.setForeground(0x2D2D2D)
+	GPUProxy.setForeground(0xFFFFFF)
 	GPUProxy.set(centrize(#title), y, title)
 
 	-- Progressbar
-	GPUProxy.setForeground(0x878787)
-	GPUProxy.set(x, y + 2, string.rep("─", part))
 	GPUProxy.setForeground(0xC3C3C3)
+	GPUProxy.set(x, y + 2, string.rep("─", part))
+	GPUProxy.setForeground(0x878787)
 	GPUProxy.set(x + part, y + 2, string.rep("─", width - part))
 
 	return require(module)
 end
 
 -- Preparing screen for loading libraries
-GPUProxy.setBackground(0xE1E1E1)
+GPUProxy.setBackground(0x000000)
 GPUProxy.fill(1, 1, screenWidth, screenHeight, " ")
 
 -- Loading libraries
@@ -135,8 +133,10 @@ local filesystem = UIRequire("Filesystem")
 -- Setting main filesystem proxy to what are we booting from
 filesystem.setProxy(bootFilesystemProxy)
 
--- Replacing requireExists function after filesystem library initialization
-requireExists = filesystem.exists
+-- Redeclaring requireExists function after filesystem library initialization
+requireExists = function(variant)
+	return filesystem.exists(variant)
+end
 
 -- Loading other libraries
 UIRequire("Component")
@@ -202,7 +202,6 @@ event.addHandler(
 			else
 				if not GPUProxy.getScreen() then
 					local address = component.list("screen")()
-					
 					if address then
 						bindScreen(address)
 					end
@@ -218,7 +217,6 @@ system.authorize()
 -- Main loop with UI regeneration after errors 
 while true do
 	local success, path, line, traceback = system.call(workspace.start, workspace, 0)
-	
 	if success then
 		break
 	else
