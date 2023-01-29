@@ -18,6 +18,11 @@ Here's a list of a few features:
 -   Animations, wallpapers, screensavers, color schemes and huge customization possibilities
 -   Open source system API and detailed illustrated documentations
 
+## Updates
+
+Updater is Done. if you have IMineOS Before UPdate PLS Reinstall. Date 29-01-2023 23:48 Timezone in Denmark (GMT+1)
+
+
 ## how to install EFI
 
 	pastebin run KCKNwu4t
