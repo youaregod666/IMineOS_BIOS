@@ -20,7 +20,7 @@ Here's a list of a few features:
 
 ## Updates
 
-Updater is Done. if you have IMineOS Before UPdate PLS Reinstall. Date 29-01-2023 23:48 Timezone in Denmark (GMT+1)
+Updater is Done. if you have IMineOS Before Update PLS Reinstall. Date 29-01-2023 23:48 Timezone in Denmark (GMT+1)
 
 
 ## how to install EFI
