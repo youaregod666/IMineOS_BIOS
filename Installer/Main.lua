@@ -42,7 +42,7 @@ end
 
 local function title()
 	local y = math.floor(screenHeight / 2 - 1)
-	centrizedText(y, 0x2D2D2D, "Starting IMineOS PC Setup")
+	centrizedText(y, 0x2D2D2D, "Starting HillOS Setup")
 
 	return y + 2
 end
@@ -235,7 +235,7 @@ window:addChild(GUI.panel(1, 1, window.width, window.height, 0xE1E1E1))
 
 -- Top menu
 local menu = workspace:addChild(GUI.menu(1, 1, workspace.width, 0xF0F0F0, 0x787878, 0x3366CC, 0xE1E1E1))
-local installerMenu = menu:addContextMenuItem("IMineOS PC", 0x2D2D2D)
+local installerMenu = menu:addContextMenuItem("HillOS", 0x2D2D2D)
 installerMenu:addItem("Shutdown").onTouch = function()
 	computer.shutdown()
 end
@@ -308,6 +308,7 @@ local applicationsSwitchAndLabel = newSwitchAndLabel(30, 0x33DB80, "", true)
 local localizationsSwitchAndLabel = newSwitchAndLabel(30, 0x33B6FF, "", true)
 
 local acceptSwitchAndLabel = newSwitchAndLabel(30, 0x9949FF, "", false)
+local acceptSwitchAndLabel2 = newSwitchAndLabel(30, 0x9949FF, "", false)
 
 local localizationComboBox = GUI.comboBox(1, 1, 22, 1, 0xF0F0F0, 0x969696, 0xD2D2D2, 0xB4B4B4)
 for i = 1, #files.localizations do
@@ -367,6 +368,10 @@ local function checkUserInputs()
 end
 
 local function checkLicense()
+	nextButton.disabled = not acceptSwitchAndLabel.switch.state
+end
+
+local function checkLicense2()
 	nextButton.disabled = not acceptSwitchAndLabel.switch.state
 end
 
@@ -527,6 +532,15 @@ addStage(function()
 	local textBox = layout:addChild(GUI.textBox(1, 1, layout.width, layout.height - 3, 0xF0F0F0, 0x696969, lines, 1, 1, 1))
 
 	layout:addChild(acceptSwitchAndLabel)
+end)
+-- My License acception stage
+addStage(function()
+	checkLicense2()
+
+	local lines = text.wrap({request("Lic")}, layout.width - 2)
+	local textBox = layout:addChild(GUI.textBox(1, 1, layout.width, layout.height - 3, 0xF0F0F0, 0x696969, lines, 1, 1, 1))
+
+	layout:addChild(acceptSwitchAndLabel2)
 end)
 
 -- Downloading stage
