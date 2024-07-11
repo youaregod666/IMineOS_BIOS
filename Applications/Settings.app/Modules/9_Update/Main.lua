@@ -91,6 +91,8 @@ module.onTouch = function()
 		internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Libraries/System.lua", "/Libraries/System.lua")
 		internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Libraries/Text.lua", "/Libraries/Text.lua")
 		internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Libraries/Vector.lua", "/Libraries/Vector.lua")
+		internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Applications/Settings.app/Modules/9_Update/Main.lua", "/Applications/Settings.app/Modules/9_Update/Main.lua")
+		internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Applications/Settings.app/Modules/9_Update/Icon.pic", "/Applications/Settings.app/Modules/9_Update/Icon.pic")
 		if fs.exists("/Libraries/MeowEngine") then
 			if fs.exists("/Libraries/OpenComputersGL") then
 				internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Libraries/MeowEngine/Main.lua", "/Libraries/MeowEngine/Main.lua")
