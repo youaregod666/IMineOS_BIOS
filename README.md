@@ -1,5 +1,9 @@
 English
 
+# IMineOS is no longer updated
+
+IMineOS support has ended. As i have created an successor called [HillOS](https://github.com/youaregod666/HillOS/)
+
 ## IMineOS Standalone has released!
 
 Hello again, dear friend. Thank you for being with us and supporting our ideas throughout the long development cycle. IMineOS has finally reached the release stage: now it is a completely independent operating system with its own development API and wonderful [illustrated wiki](https://github.com/IgorTimofeev/MineOS/wiki) of it's usage. 
